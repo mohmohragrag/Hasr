@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>حصر الجملونات</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    h2 {
+      margin-top: 30px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
+    }
+    .section {
+      background: #fff;
+      padding: 15px 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 10px #ccc;
+      border-radius: 6px;
+    }
+    label {
+      display: inline-block;
+      width: 150px;
+      margin: 5px 10px 5px 0;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 90px;
+      padding: 5px;
+      margin-bottom: 8px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+    }
+    input[type="button"] {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+    input[type="button"]:hover {
+      background-color: #0056b3;
+    }
+    .results {
+      background: #e3ffe3;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 6px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .group-inputs {
+      margin-bottom: 10px;
+    }
+    .flex-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>حصر الجملونات</h1>
+
+  <!-- إدخال بيانات نوع عنصر -->
+  <div class="section">
+    <h2>العمدان الرئيسية</h2>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 1 (مم):</label>
+      <input type="number" id="main_fl1_length" min="0" value="3000" />
+      <label>عرض الفلانشة 1 (مم):</label>
+      <input type="number" id="main_fl1_width" min="0" value="200" />
+      <label>سمك الفلانشة 1 (مم):</label>
+      <input type="number" id="main_fl1_thickness" min="0" value="10" />
+      <label>عدد العمدان:</label>
+      <input type="number" id="main_count" min="0" value="2" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 2 (مم):</label>
+      <input type="number" id="main_fl2_length" min="0" value="3000" />
+      <label>عرض الفلانشة 2 (مم):</label>
+      <input type="number" id="main_fl2_width" min="0" value="200" />
+      <label>سمك الفلانشة 2 (مم):</label>
+      <input type="number" id="main_fl2_thickness" min="0" value="10" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الويب (مم):</label>
+      <input type="number" id="main_web_length" min="0" value="3000" />
+      <label>عرض الويب (مم):</label>
+      <input type="number" id="main_web_width" min="0" value="400" />
+      <label>سمك الويب (مم):</label>
+      <input type="number" id="main_web_thickness" min="0" value="8" />
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>عمدان الوسط</h2>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 1 (مم):</label>
+      <input type="number" id="mid_fl1_length" min="0" value="2800" />
+      <label>عرض الفلانشة 1 (مم):</label>
+      <input type="number" id="mid_fl1_width" min="0" value="180" />
+      <label>سمك الفلانشة 1 (مم):</label>
+      <input type="number" id="mid_fl1_thickness" min="0" value="9" />
+      <label>عدد العمدان:</label>
+      <input type="number" id="mid_count" min="0" value="3" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 2 (مم):</label>
+      <input type="number" id="mid_fl2_length" min="0" value="2800" />
+      <label>عرض الفلانشة 2 (مم):</label>
+      <input type="number" id="mid_fl2_width" min="0" value="180" />
+      <label>سمك الفلانشة 2 (مم):</label>
+      <input type="number" id="mid_fl2_thickness" min="0" value="9" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الويب (مم):</label>
+      <input type="number" id="mid_web_length" min="0" value="2800" />
+      <label>عرض الويب (مم):</label>
+      <input type="number" id="mid_web_width" min="0" value="350" />
+      <label>سمك الويب (مم):</label>
+      <input type="number" id="mid_web_thickness" min="0" value="7" />
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>عمدان الوجهة</h2>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 1 (مم):</label>
+      <input type="number" id="face_fl1_length" min="0" value="2500" />
+      <label>عرض الفلانشة 1 (مم):</label>
+      <input type="number" id="face_fl1_width" min="0" value="150" />
+      <label>سمك الفلانشة 1 (مم):</label>
+      <input type="number" id="face_fl1_thickness" min="0" value="8" />
+      <label>عدد العمدان:</label>
+      <input type="number" id="face_count" min="0" value="2" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 2 (مم):</label>
+      <input type="number" id="face_fl2_length" min="0" value="2500" />
+      <label>عرض الفلانشة 2 (مم):</label>
+      <input type="number" id="face_fl2_width" min="0" value="150" />
+      <label>سمك الفلانشة 2 (مم):</label>
+      <input type="number" id="face_fl2_thickness" min="0" value="8" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الويب (مم):</label>
+      <input type="number" id="face_web_length" min="0" value="2500" />
+      <label>عرض الويب (مم):</label>
+      <input type="number" id="face_web_width" min="0" value="300" />
+      <label>سمك الويب (مم):</label>
+      <input type="number" id="face_web_thickness" min="0" value="6" />
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>رفاتر العدلة</h2>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 1 (مم):</label>
+      <input type="number" id="raf_fl1_length" min="0" value="1500" />
+      <label>عرض الفلانشة 1 (مم):</label>
+      <input type="number" id="raf_fl1_width" min="0" value="150" />
+      <label>سمك الفلانشة 1 (مم):</label>
+      <input type="number" id="raf_fl1_thickness" min="0" value="7" />
+      <label>عدد الرفاتر:</label>
+      <input type="number" id="raf_count" min="0" value="4" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 2 (مم):</label>
+      <input type="number" id="raf_fl2_length" min="0" value="1500" />
+      <label>عرض الفلانشة 2 (مم):</label>
+      <input type="number" id="raf_fl2_width" min="0" value="150" />
+      <label>سمك الفلانشة 2 (مم):</label>
+      <input type="number" id="raf_fl2_thickness" min="0" value="7" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الويب (مم):</label>
+      <input type="number" id="raf_web_length" min="0" value="1500" />
+      <label>عرض الويب (مم):</label>
+      <input type="number" id="raf_web_width" min="0" value="250" />
+      <label>سمك الويب (مم):</label>
+      <input type="number" id="raf_web_thickness" min="0" value="5" />
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>رفاتر الطيارة</h2>
+    <h3>قبل السلب</h3>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 1 (مم):</label>
+      <input type="number" id="fly_before_fl1_length" min="0" value="1000" />
+      <label>عرض الفلانشة 1 (مم):</label>
+      <input type="number" id="fly_before_fl1_width" min="0" value="120" />
+      <label>سمك الفلانشة 1 (مم):</label>
+      <input type="number" id="fly_before_fl1_thickness" min="0" value="6" />
+      <label>عدد الرفاتر:</label>
+      <input type="number" id="fly_before_count" min="0" value="3" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 2 (مم):</label>
+      <input type="number" id="fly_before_fl2_length" min="0" value="1000" />
+      <label>عرض الفلانشة 2 (مم):</label>
+      <input type="number" id="fly_before_fl2_width" min="0" value="120" />
+      <label>سمك الفلانشة 2 (مم):</label>
+      <input type="number" id="fly_before_fl2_thickness" min="0" value="6" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الويب (مم):</label>
+      <input type="number" id="fly_before_web_length" min="0" value="1000" />
+      <label>عرض الويب (مم):</label>
+      <input type="number" id="fly_before_web_width" min="0" value="200" />
+      <label>سمك الويب (مم):</label>
+      <input type="number" id="fly_before_web_thickness" min="0" value="4" />
+    </div>
+
+    <h3>بعد السلب</h3>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 1 (مم):</label>
+      <input type="number" id="fly_after_fl1_length" min="0" value="1100" />
+      <label>عرض الفلانشة 1 (مم):</label>
+      <input type="number" id="fly_after_fl1_width" min="0" value="125" />
+      <label>سمك الفلانشة 1 (مم):</label>
+      <input type="number" id="fly_after_fl1_thickness" min="0" value="6" />
+      <label>عدد الرفاتر:</label>
+      <input type="number" id="fly_after_count" min="0" value="3" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الفلانشة 2 (مم):</label>
+      <input type="number" id="fly_after_fl2_length" min="0" value="1100" />
+      <label>عرض الفلانشة 2 (مم):</label>
+      <input type="number" id="fly_after_fl2_width" min="0" value="125" />
+      <label>سمك الفلانشة 2 (مم):</label>
+      <input type="number" id="fly_after_fl2_thickness" min="0" value="6" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>طول الويب (مم):</label>
+      <input type="number" id="fly_after_web_length" min="0" value="1100" />
+      <label>عرض الويب (مم):</label>
+      <input type="number" id="fly_after_web_width" min="0" value="210" />
+      <label>سمك الويب (مم):</label>
+      <input type="number" id="fly_after_web_thickness" min="0" value="4" />
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>الأوزان المباشرة</h2>
+    <div class="flex-row group-inputs">
+      <label>وزن المدادات (كجم):</label>
+      <input type="number" id="weight_mdadat" min="0" value="30" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>وزن المقصات (كجم):</label>
+      <input type="number" id="weight_meqsat" min="0" value="40" />
+    </div>
+    <div class="flex-row group-inputs">
+      <label>وزن الشدادات (كجم):</label>
+      <input type="number" id="weight_shdadat" min="0" value="30" />
+    </div>
+  </div>
+
+  <input type="button" value="احسب الوزن" onclick="calculateWeights()" />
+
+  <div class="results" id="results"></div>
+
+  <script>
+    function calculateSectionWeight(length, width, thickness, count) {
+      // حجم قطعة = الطول * العرض * السمك (مم³)
+      // وزن = الحجم * كثافة الحديد (7.85 جم/سم³) / 1,000,000 لتحويل مم³ إلى م³ وللوزن بالكجم
+      // نضرب في العدد أيضاً
+      if(length <=0 || width <=0 || thickness <=0 || count <=0) return 0;
+      const volume_mm3 = length * width * thickness;
+      const weight_kg = (volume_mm3 * 7.85 / 1000000) * count;
+      return weight_kg;
+    }
+
+    function calculateWeights() {
+      // العمدان الرئيسية
+      const main_fl1_length = +document.getElementById('main_fl1_length').value;
+      const main_fl1_width = +document.getElementById('main_fl1_width').value;
+      const main_fl1_thickness = +document.getElementById('main_fl1_thickness').value;
+
+      const main_fl2_length = +document.getElementById('main_fl2_length').value;
+      const main_fl2_width = +document.getElementById('main_fl2_width').value;
+      const main_fl2_thickness = +document.getElementById('main_fl2_thickness').value;
+
+      const main_web_length = +document.getElementById('main_web_length').value;
+      const main_web_width = +document.getElementById('main_web_width').value;
+      const main_web_thickness = +document.getElementById('main_web_thickness').value;
+
+      const main_count = +document.getElementById('main_count').value;
+
+      // عمدان الوسط
+      const mid_fl1_length = +document.getElementById('mid_fl1_length').value;
+      const mid_fl1_width = +document.getElementById('mid_fl1_width').value;
+      const mid_fl1_thickness = +document.getElementById('mid_fl1_thickness').value;
+
+      const mid_fl2_length = +document.getElementById('mid_fl2_length').value;
+      const mid_fl2_width = +document.getElementById('mid_fl2_width').value;
+      const mid_fl2_thickness = +document.getElementById('mid_fl2_thickness').value;
+
+      const mid_web_length = +document.getElementById('mid_web_length').value;
+      const mid_web_width = +document.getElementById('mid_web_width').value;
+      const mid_web_thickness = +document.getElementById('mid_web_thickness').value;
+
+      const mid_count = +document.getElementById('mid_count').value;
+
+      // عمدان الوجهة
+      const face_fl1_length = +document.getElementById('face_fl1_length').value;
+      const face_fl1_width = +document.getElementById('face_fl1_width').value;
+      const face_fl1_thickness = +document.getElementById('face_fl1_thickness').value;
+
+      const face_fl2_length = +document.getElementById('face_fl2_length').value;
+      const face_fl2_width = +document.getElementById('face_fl2_width').value;
+      const face_fl2_thickness = +document.getElementById('face_fl2_thickness').value;
+
+      const face_web_length = +document.getElementById('face_web_length').value;
+      const face_web_width = +document.getElementById('face_web_width').value;
+      const face_web_thickness = +document.getElementById('face_web_thickness').value;
+
+      const face_count = +document.getElementById('face_count').value;
+
+      // رافترات العدلة
+      const raf_fl1_length = +document.getElementById('raf_fl1_length').value;
+      const raf_fl1_width = +document.getElementById('raf_fl1_width').value;
+      const raf_fl1_thickness = +document.getElementById('raf_fl1_thickness').value;
+
+      const raf_fl2_length = +document.getElementById('raf_fl2_length').value;
+      const raf_fl2_width = +document.getElementById('raf_fl2_width').value;
+      const raf_fl2_thickness = +document.getElementById('raf_fl2_thickness').value;
+
+      const raf_web_length = +document.getElementById('raf_web_length').value;
+      const raf_web_width = +document.getElementById('raf_web_width').value;
+      const raf_web_thickness = +document.getElementById('raf_web_thickness').value;
+
+      const raf_count = +document.getElementById('raf_count').value;
+
+      // رافترات الطيارة - قبل السلب
+      const fly_before_fl1_length = +document.getElementById('fly_before_fl1_length').value;
+      const fly_before_fl1_width = +document.getElementById('fly_before_fl1_width').value;
+      const fly_before_fl1_thickness = +document.getElementById('fly_before_fl1_thickness').value;
+      const fly_before_count = +document.getElementById('fly_before_count').value;
+
+      const fly_before_fl2_length = +document.getElementById('fly_before_fl2_length').value;
+      const fly_before_fl2_width = +document.getElementById('fly_before_fl2_width').value;
+      const fly_before_fl2_thickness = +document.getElementById('fly_before_fl2_thickness').value;
+
+      const fly_before_web_length = +document.getElementById('fly_before_web_length').value;
+      const fly_before_web_width = +document.getElementById('fly_before_web_width').value;
+      const fly_before_web_thickness = +document.getElementById('fly_before_web_thickness').value;
+
+      // رافترات الطيارة - بعد السلب
+      const fly_after_fl1_length = +document.getElementById('fly_after_fl1_length').value;
+      const fly_after_fl1_width = +document.getElementById('fly_after_fl1_width').value;
+      const fly_after_fl1_thickness = +document.getElementById('fly_after_fl1_thickness').value;
+      const fly_after_count = +document.getElementById('fly_after_count').value;
+
+      const fly_after_fl2_length = +document.getElementById('fly_after_fl2_length').value;
+      const fly_after_fl2_width = +document.getElementById('fly_after_fl2_width').value;
+      const fly_after_fl2_thickness = +document.getElementById('fly_after_fl2_thickness').value;
+
+      const fly_after_web_length = +document.getElementById('fly_after_web_length').value;
+      const fly_after_web_width = +document.getElementById('fly_after_web_width').value;
+      const fly_after_web_thickness = +document.getElementById('fly_after_web_thickness').value;
+
+      // الأوزان المباشرة
+      const weight_mdadat = +document.getElementById('weight_mdadat').value;
+      const weight_meqsat = +document.getElementById('weight_meqsat').value;
+      const weight_shdadat = +document.getElementById('weight_shdadat').value;
+
+      // حساب الأوزان
+      const main_weight =
+        calculateSectionWeight(main_fl1_length, main_fl1_width, main_fl1_thickness, main_count) +
+        calculateSectionWeight(main_fl2_length, main_fl2_width, main_fl2_thickness, main_count) +
+        calculateSectionWeight(main_web_length, main_web_width, main_web_thickness, main_count);
+
+      const mid_weight =
+        calculateSectionWeight(mid_fl1_length, mid_fl1_width, mid_fl1_thickness, mid_count) +
+        calculateSectionWeight(mid_fl2_length, mid_fl2_width, mid_fl2_thickness, mid_count) +
+        calculateSectionWeight(mid_web_length, mid_web_width, mid_web_thickness, mid_count);
+
+      const face_weight =
+        calculateSectionWeight(face_fl1_length, face_fl1_width, face_fl1_thickness, face_count) +
+        calculateSectionWeight(face_fl2_length, face_fl2_width, face_fl2_thickness, face_count) +
+        calculateSectionWeight(face_web_length, face_web_width, face_web_thickness, face_count);
+
+      const raf_weight =
+        calculateSectionWeight(raf_fl1_length, raf_fl1_width, raf_fl1_thickness, raf_count) +
+        calculateSectionWeight(raf_fl2_length, raf_fl2_width, raf_fl2_thickness, raf_count) +
+        calculateSectionWeight(raf_web_length, raf_web_width, raf_web_thickness, raf_count);
+
+      const fly_before_weight =
+        calculateSectionWeight(fly_before_fl1_length, fly_before_fl1_width, fly_before_fl1_thickness, fly_before_count) +
+        calculateSectionWeight(fly_before_fl2_length, fly_before_fl2_width, fly_before_fl2_thickness, fly_before_count) +
+        calculateSectionWeight(fly_before_web_length, fly_before_web_width, fly_before_web_thickness, fly_before_count);
+
+      const fly_after_weight =
+        calculateSectionWeight(fly_after_fl1_length, fly_after_fl1_width, fly_after_fl1_thickness, fly_after_count) +
+        calculateSectionWeight(fly_after_fl2_length, fly_after_fl2_width, fly_after_fl2_thickness, fly_after_count) +
+        calculateSectionWeight(fly_after_web_length, fly_after_web_width, fly_after_web_thickness, fly_after_count);
+
+      const fly_weight = fly_before_weight + fly_after_weight;
+
+      const total_rafters_weight = raf_weight + fly_weight;
+      const total_direct_weights = weight_mdadat + weight_meqsat + weight_shdadat;
+
+      const total_project_weight = main_weight + mid_weight + face_weight + total_rafters_weight + total_direct_weights;
+
+      const scrap_weight = total_project_weight * 0.12; // 12% خردة
+
+      // عرض النتائج
+      let resultsHTML = `
+        <h3>النتائج:</h3>
+        <p>وزن العمدان الرئيسية: ${main_weight.toFixed(2)} كجم</p>
+        <p>وزن العمدان الوسط: ${mid_weight.toFixed(2)} كجم</p>
+        <p>وزن العمدان الوجهة: ${face_weight.toFixed(2)} كجم</p>
+        <p>وزن رافترات العدلة: ${raf_weight.toFixed(2)} كجم</p>
+        <p>وزن رافترات الطيارة (قبل وبعد السلب): ${fly_weight.toFixed(2)} كجم</p>
+        <p>الوزن الكلي للرافترات: ${total_rafters_weight.toFixed(2)} كجم</p>
+        <p>الأوزان المباشرة: ${total_direct_weights.toFixed(2)} كجم</p>
+        <p>إجمالي وزن المشروع: ${total_project_weight.toFixed(2)} كجم</p>
+        <p>الوزن المتوقع للتات (خردة 12%): ${scrap_weight.toFixed(2)} كجم</p>
+      `;
+
+      document.getElementById('results').innerHTML = resultsHTML;
+    }
+  </script>
+</body>
+</html>
